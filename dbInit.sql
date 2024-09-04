@@ -53,7 +53,8 @@ VALUES
 	('Waterloo', true),
 	('Lambeth North', true),
 	('Elephant and Castle', true);
-	
+
+-- Maybe useful when several lines are added..? Can use the id of stationConnections to quickly figure out routes
 INSERT INTO stationConnections(lineId, stationId, previousStation, nextStation)
 VALUES
 	(1, 1, null, 2),
