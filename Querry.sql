@@ -39,11 +39,19 @@ SELECT *
 
 SELECT * FROM neighbor;
 
-SELECT s1.name, s2.name, SUM(travel_time) FROM station 
+SELECT s1.name AS Start, s2.name AS End, SUM(travel_time) AS Journey_Time FROM station 
 	JOIN neighbor n1 on station.id = n1.station_id_1 
   JOIN station s1 on s1.name = 'Oxford Circus'
   JOIN station s2 on s2.name = 'Waterloo'
   WHERE station.id = n1.station_id_1 AND 
     n1.station_id_2 > s1.id AND n1.station_id_1 <= s2.id
     GROUP BY s1.name, s2.name;
+ 
+SELECT CONCAT(s1.name, ' (Zone ', s1.zone, ')') AS Start, CONCAT(s2.name, ' (Zone ', s2.zone, ')') AS End FROM station 
+	JOIN neighbor n1 on station.id = n1.station_id_1 
+  JOIN station s1 on s1.name = 'Harrow & Wealdstone'
+  JOIN station s2 on s2.name = 'Waterloo'
+  WHERE station.id = n1.station_id_1 AND 
+    n1.station_id_2 > s1.id AND n1.station_id_1 <= s2.id
+    LIMIT 1;
     
