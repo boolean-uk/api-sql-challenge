@@ -1,0 +1,11 @@
+CREATE FUNCTION AddZone (n text, z int)
+RETURNS text
+LANGUAGE plpgsql
+AS $function$
+BEGIN
+    RETURN n || ' (Zone ' || z || ')';
+END $function$;
+
+SELECT AddZone(stations.name, stations.zonenr)
+FROM stations
+WHERE id = 1;
