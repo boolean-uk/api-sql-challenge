@@ -1,0 +1,21 @@
+CREATE FUNCTION TimeBetweenStations (s1 int, s2 int)
+RETURNS text
+LANGUAGE plpgsql
+AS $function$
+DECLARE
+	var int := 0;
+BEGIN
+	FOR cnt in s1..s2 LOOP
+		var := var + (SELECT timetonext FROM stations WHERE id = cnt);
+	END LOOP;
+	RETURN var;
+END $function$;
+
+
+WITH combined AS (
+SELECT
+	(SELECT name FROM stations WHERE id = 13) as startstation,
+	(SELECT name FROM stations WHERE id = 15) as endstation
+)
+SELECT startstation, endstation, TimeBetweenStations(13, 15) AS traveltime
+FROM combined;
