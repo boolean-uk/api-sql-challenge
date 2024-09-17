@@ -6,7 +6,8 @@ CREATE TABLE lines(
 CREATE TABLE stations(
 	id SERIAL PRIMARY KEY,
 	name TEXT NOT NULL,
-	status BOOLEAN NOT NULL
+	status BOOLEAN NOT NULL,
+	zoneNr INT
 );
 
 CREATE TABLE stationConnections(
@@ -26,33 +27,33 @@ CREATE TABLE services(
 INSERT INTO lines(name)
 VALUES ('Bakerloo Line');
 
-INSERT INTO stations(name, status)
+INSERT INTO stations(name, status, zoneNr)
 VALUES
-	('Harrow & Wealdstone', true),
-	('Kenton', true),
-	('South Kenton', true),
-	('North Wembley', true),
-	('Wembley Central', true),
-	('Stonebridge Park', true),
-	('Harlesden', true),
-	('Willesden Junction', true),
-	('Kensel Green', true),
-	('Queens Park', true),
-	('Kilburn Park', true),
-	('Maida Vale', false),
-	('Warwick Avenue', true),
-	('Paddington', true),
-	('Edgeware Road', true),
-	('Marylebone', true),
-	('Baker Street', true),
-	('Regents Park', true),
-	('Oxford Circus', true),
-	('Piccadilly Circus', true),
-	('Charing Cross', true),
-	('Embankment', true),
-	('Waterloo', true),
-	('Lambeth North', true),
-	('Elephant and Castle', true);
+	('Harrow & Wealdstone', true, 5),
+	('Kenton', true, 4),
+	('South Kenton', true, 4),
+	('North Wembley', true, 4),
+	('Wembley Central', true, 4),
+	('Stonebridge Park', true, 3),
+	('Harlesden', true, 3),
+	('Willesden Junction', true, 3),
+	('Kensel Green', true, 2),
+	('Queens Park', true, 2),
+	('Kilburn Park', true, 2),
+	('Maida Vale', false, 2),
+	('Warwick Avenue', true, 2),
+	('Paddington', true, 1),
+	('Edgeware Road', true, 1),
+	('Marylebone', true, 1),
+	('Baker Street', true, 1),
+	('Regents Park', true, 1),
+	('Oxford Circus', true, 1),
+	('Piccadilly Circus', true, 1),
+	('Charing Cross', true, 1),
+	('Embankment', true, 1),
+	('Waterloo', true, 1),
+	('Lambeth North', true, 1),
+	('Elephant and Castle', true, 1);
 
 -- Maybe useful when several lines are added..? Can use the id of stationConnections to quickly figure out routes
 INSERT INTO stationConnections(lineId, stationId, previousStation, nextStation)
