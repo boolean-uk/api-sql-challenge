@@ -1,12 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Core",
-    "\\Line",
-    "\\Services",
-    "\\Station",
-    "\\StationServices"
+    "\\Core"
   ],
-  "SelectedNode": "\\Core\\createAnd",
+  "SelectedNode": "\\Core\\Queries.sql",
   "PreviewInSolutionExplorer": false
 }

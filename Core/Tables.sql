@@ -1,30 +1,35 @@
-create table lines (
+create table line (
 	id serial primary key,
 	name varchar(50) not null,
 	unique(id, name)
 );
 
-create table stations (
+create table station (
 	id serial primary key,
 	name varchar(50) not null,
 	isClosed boolean not null,
 	unique(id, name)
 );
 
-create table services (
+create table service (
 	id serial primary key,
-	station_fk integer references stations(id),
-	line_fk integer references lines(id),
-	connectsToTrain boolean not null,
-	unique(id)
+	name varchar(50) not null,
+	unique(id, name)
 );
 
-insert into lines
+create table stationService (
+	id serial primary key,
+	station_fk integer references station(id),
+	service_fk integer references service(id),
+	unique(id, station_fk, service_fk)
+);
+
+insert into line
 (name)
 values
 ('Bakerloo');
 
-insert into stations
+insert into station
 (name, isClosed)
 values
 ('Harrow & Wealdstone', false),  
@@ -53,32 +58,64 @@ values
 ('Lambeth North', false),  
 ('Elephant and Castle', false);
 
-insert into services
-(station_fk, line_fk, connectsToTrain)
+insert into service
+(name)
 values
-(1, 1, true),
-(2, 1, false),
-(3, 1, false),
-(4, 1, false),
-(5, 1, true),
-(6, 1, false),
-(7, 1, false),
-(8, 1, true),
-(9, 1, false),
-(10, 1, true),
-(11, 1, false),
-(12, 1, false),
-(13, 1, false),
-(14, 1, true),
-(15, 1, false),
-(16, 1, true),
-(17, 1, false),
-(18, 1, false),
-(19, 1, false),
-(20, 1, false),
-(21, 1, true),
-(22, 1, false),
-(23, 1, true),
-(24, 1, false),
-(25, 1, true);
+('Network Rail');
 
+insert into stationService
+(station_fk, service_fk)
+values
+(1, 1),
+(5, 1),
+(8, 1),
+(10, 1),
+(14, 1),
+(16, 1),
+(21, 1),
+(25,1);
+
+--Extensions
+alter table station add column zone integer;
+
+update station set zone = 1 where id between 14 and 25;
+update station set zone = 2 where id between 8 and 13;
+update station set zone = 3 where id between 6 and 7;
+update station set zone = 4 where id between 2 and 5;
+update station set zone = 5 where id = 1;
+
+create table travelTime (
+	id serial primary key,
+	start_station_fk integer references station(id),
+	end_station_fk integer references station(id),
+	travel_time integer not null,
+	unique(id, start_station_fk, end_station_fk)
+);
+
+insert into travelTime
+(start_station_fk, end_station_fk, travel_time)
+values
+(1, 2, 2),
+(2, 3, 2),
+(3, 4, 2),
+(4, 5, 2),
+(5, 6, 2),
+(6, 7, 3),
+(7, 8, 2),
+(8, 9, 3),
+(9, 10, 3),
+(10, 11, 3),
+(11, 12, 2),
+(12, 13, 2),
+(13, 14, 2),
+(14, 15, 2),
+(15, 16, 1),
+(16, 17, 1),
+(17, 18, 2),
+(18, 19, 2),
+(19, 20, 2),
+(20, 21, 2),
+(21, 22, 1),
+(22, 23, 1),
+(23, 24, 2),
+(24, 25, 2);
