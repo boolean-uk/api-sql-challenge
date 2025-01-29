@@ -1,0 +1,50 @@
+Stations
+	int id PK
+	bool open_status
+	string station_name
+	int zone_id FK
+
+Zones
+	int id PK 
+	string name
+
+Connections
+	int station_id FK
+	int connected_station_id FK
+
+ConnectingLines
+	time duration
+	int line_id FK
+	int station_id FK
+	int connecting_station_id FK
+
+Lines
+	int id PK
+	int start_station FK
+	int end_station FK
+
+
+Services 
+	int id PK
+	string service_name 
+	int lines_id FK
+
+StationService
+	int station_id FK
+	int service_id FK
+
+
+Stations{1}--has--{1..n}StationService
+
+Lines{1}--has--{1..n}ConnectingLines
+ConnectingLines{1..n}--has--{1}Connections
+Stations{1}--has--{1..n}Connections
+
+Services{1}--has--{1..n}StationService
+Services{1..n}--has--{1}Lines
+
+
+Stations{0..n}--has--{1}Zones
+
+
+
