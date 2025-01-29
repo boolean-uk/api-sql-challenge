@@ -10,7 +10,7 @@ CREATE TABLE stations(
 	open_status boolean,
 	name VARCHAR(128),
 	zone_id int,
-	CONSTRAINT fk_zone_id FOREIGN KEY (zone_id) REFERENCES zones(id)
+	CONSTRAINT fk_zone_id FOREIGN KEY (zone_id) REFERENCES zones(id),
 	UNIQUE(name)
 );
 
