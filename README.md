@@ -28,33 +28,50 @@ Write sql queries to:
 - Select stations Elephant & Castle to Harrow & Wealdstone that have 'Network Rail' services (see the stations with the train in the image)
 - Select stations from Lambeth North to Kensal Green
 
-| Id  | StationName           |
-| --- | --------------------- |
-| 1   | Harrow & Wealdstone   |
-| 2   | "Kenton"              |
-| 3   | "South Kenton"        |
-| 4   | "North Wembley"       |
-| 5   | "Wembley Central"     |
-| 6   | "Stonebridge Park"    |
-| 7   | "Harlesden"           |
-| 8   | "Willesden Junction"  |
-| 9   | "Kensel Green"        |
-| 10  | "Queens Park"         |
-| 11  | "Kilburn Park"        |
-| 12  | "Maida Vale"          |
-| 13  | "Warwick Avenue"      |
-| 14  | "Paddington"          |
-| 15  | "Edgeware Road"       |
-| 16  | "Marylebone"          |
-| 17  | "Baker Street"        |
-| 18  | "Regents Park"        |
-| 19  | "Oxford Circus"       |
-| 20  | "Piccadilly Circus"   |
-| 21  | "Charing Cross"       |
-| 22  | "Embankment"          |
-| 23  | "Waterloo"            |
-| 24  | "Lambeth North"       |
-| 25  | "Elephant and Castle" |
+| Id  | StationName           | Services                                                                                |
+| --- | --------------------- | ----------------------------------------------------------------------------------------|
+| 1   | Harrow & Wealdstone   | Bakerloo Line, London Overground, National Rail                                         |
+| 2   | "Kenton"              | Bakerloo Line, London Overground                                                        |
+| 3   | "South Kenton"        | Bakerloo Line, London Overground                                                        |
+| 4   | "North Wembley"       | Bakerloo Line, London Overground                                                        |
+| 5   | "Wembley Central"     | Bakerloo Line, London Overground, National Rail                                         |
+| 6   | "Stonebridge Park"    | Bakerloo Line, London Overground                                                        |
+| 7   | "Harlesden"           | Bakerloo Line, London Overground                                                        |
+| 8   | "Willesden Junction"  | Bakerloo Line, London Overground                                                        |
+| 9   | "Kensel Green"        | Bakerloo Line, London Overground                                                        |
+| 10  | "Queens Park"         | Bakerloo Line, London Overground                                                        |
+| 11  | "Kilburn Park"        | Bakerloo Line                                                                           |
+| 12  | "Maida Vale"          | Bakerloo Line                                                                           |
+| 13  | "Warwick Avenue"      | Bakerloo Line                                                                           |
+| 14  | "Paddington"          | Bakerloo Line, Circle Line, District Line, Hammersmith & City Line, National Rail       |
+| 15  | "Edgeware Road"       | Bakerloo Line, Circle Line, District Line, Hammersmith & City Line                      |
+| 16  | "Marylebone"          | Bakerloo Line, National Rail                                                            |
+| 17  | "Baker Street"        | Bakerloo Line, Circle Line, Hammersmith & City Line, Jubilee Line, Metropolitan Line    |
+| 18  | "Regents Park"        | Bakerloo Line                                                                           |
+| 19  | "Oxford Circus"       | Bakerloo Line, Central Line, Victoria Line                                              |
+| 20  | "Piccadilly Circus"   | Bakerloo Line, Piccadilly Line                                                          |
+| 21  | "Charing Cross"       | Bakerloo Line, Northern Line, National Rail                                             |
+| 22  | "Embankment"          | Bakerloo Line, Circle Line, District Line, Northern Line                                |
+| 23  | "Waterloo"            | Bakerloo Line, Jubilee Line, Northern Line, Waterloo & City Line, National Rail         |
+| 24  | "Lambeth North"       | Bakerloo Line                                                                           |
+| 25  | "Elephant and Castle" | Bakerloo Line, Northern Line, National Rail                                             |
+
+
+ | All Services              |
+ | ------------------------- |
+ | Bakerloo Line,            |
+ | London Overground         |
+ | National Rail             |
+ | Circle Line               |
+ | District Line             |
+ | Hammersmith & City Line   |
+ | Jubilee Line              |
+ | Metropolitan Line         |
+ | Victoria Line             |
+ | Piccadilly Line           |
+ | Northern Line             |
+ | Waterloo & City Line      |
+ 
 
 ## Extension Criteria #1 - Zones
 
@@ -66,7 +83,7 @@ Include Zones in your database design.
   | ------------------- | -------------------- |
   | Marylebone (Zone 1) | Northfields (Zone 3) |
 
-NOTE: do not write the Zone into the name of the station column!
+NOTE                          : do not write the Zone into the name of the station column!
 
 ![](zone_one.png "Bakerloo Line Zone 1")
 
