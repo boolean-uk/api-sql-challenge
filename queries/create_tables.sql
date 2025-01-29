@@ -17,19 +17,28 @@ CREATE TABLE stations(
 
 CREATE TABLE lines(
 	id serial PRIMARY KEY, 
-	expected_duration_a_to_b time,
-	station_id int,
-	a_linked_station int,
-	b_linked_station int,
-	CONSTRAINT fk_a_linked_station FOREIGN KEY (a_linked_station) REFERENCES stations(id),
-	CONSTRAINT fk_b_linked_station FOREIGN KEY (b_linked_station) REFERENCES stations(id)
+	start_station int,
+	end_station int,
+	CONSTRAINT fk_start_station FOREIGN KEY (start_station) REFERENCES stations(id),
+	CONSTRAINT fk_end_station FOREIGN KEY (end_station) REFERENCES stations(id)
 );
 
-CREATE TABLE platforms(
-	line_id int,
+CREATE TABLE connectingLines(
+	duration time,
 	station_id int,
-	CONSTRAINT fk_line_id FOREIGN KEY (line_id) REFERENCES lines(id),
-	CONSTRAINT fk_station_id FOREIGN KEY (station_id) REFERENCES stations(id)
+	connecting_station_id int,
+	line_id int,
+	CONSTRAINT fk_station_id FOREIGN KEY (station_id) REFERENCES stations(id),
+	CONSTRAINT fk_connecting_station_id FOREIGN KEY (connecting_station_id) REFERENCES stations(id),
+	CONSTRAINT fk_line_id FOREIGN KEY (line_id) REFERENCES lines(id)
+);
+
+CREATE TABLE connections(
+	station_id int,	
+	connected_station_id int,
+	CONSTRAINT fk_station_id FOREIGN KEY (station_id) REFERENCES stations(id),
+	CONSTRAINT fk_connected_station_id FOREIGN KEY (connected_station_id) REFERENCES stations(id),
+	CONSTRAINT check_identical_station_ids CHECK (station_id != connected_station_id)
 );
 
 CREATE TABLE services(
