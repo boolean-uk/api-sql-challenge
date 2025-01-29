@@ -1,22 +1,19 @@
 
-CREATE TABLE stations(
-	id serial PRIMARY KEY,
-	open_status boolean,
-	name VARCHAR(128),
-	UNIQUE(name)
-);
-
 CREATE TABLE zones(
 	id serial PRIMARY KEY, 
 	name VARCHAR(128)
 );
 
-CREATE TABLE station_in_zone(
+
+CREATE TABLE stations(
+	id serial PRIMARY KEY,
+	open_status boolean,
+	name VARCHAR(128),
 	zone_id int,
-	station_id int,
 	CONSTRAINT fk_zone_id FOREIGN KEY (zone_id) REFERENCES zones(id)
-	CONSTRAINT fk_station_id FOREIGN KEY (station_id) REFERENCES stations(id)
+	UNIQUE(name)
 );
+
 
 CREATE TABLE lines(
 	id serial PRIMARY KEY, 
