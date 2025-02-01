@@ -13,21 +13,21 @@ Connections
 	int connected_station_id FK
 
 ConnectingLines
-	time duration
+	int duration_min
 	int line_id FK
 	int station_id FK
 	int connecting_station_id FK
 
 Lines
 	int id PK
+	int service_id FK
 	int start_station FK
 	int end_station FK
-
+	
 
 Services 
 	int id PK
 	string service_name 
-	int lines_id FK
 
 StationService
 	int station_id FK
@@ -41,10 +41,7 @@ ConnectingLines{1..n}--has--{1}Connections
 Stations{1}--has--{1..n}Connections
 
 Services{1}--has--{1..n}StationService
-Services{1..n}--has--{1}Lines
+Services{1}--has--{1..n}Lines
 
 
 Stations{0..n}--has--{1}Zones
-
-
-
